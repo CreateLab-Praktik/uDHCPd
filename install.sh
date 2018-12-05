@@ -3,12 +3,12 @@
 FOLDER=$(dirname $(realpath "$0"))
 cd $FOLDER
 
-sudo apt install -y udhcpd
+dpkg -s udhcpd || { \
+	sudo apt install -y udhcpd && \
+	sudo systemctl stop udhcpd; \
+	sudo systemctl disable udhcpd; }
 
-sudo systemd stop udhcpd
-sudo systemd disable udhcpd
-
-sudo ln -sf $FOLDER/udhcpd.conf /etc/udhcpd.conf
-sudo ln -sf $FOLDER/udhcpd /etc/default/udhcpd
+sudo ln -sfn $FOLDER/udhcpd.conf /etc/udhcpd.conf
+sudo ln -sfn $FOLDER/udhcpd /etc/default/udhcpd
 
 
