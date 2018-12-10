@@ -1,0 +1,11 @@
+[Unit]
+Description=test service for udhcpd
+
+[Service]
+ExecStart=/usr/sbin/udhcpd -Sf
+StandardOutput=syslog
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
