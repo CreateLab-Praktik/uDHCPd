@@ -1,5 +1,5 @@
 [Unit]
-Description=test service for udhcpd
+Description=DHCP server service that provides IPs
 
 [Service]
 ExecStart=/usr/sbin/udhcpd -Sf
